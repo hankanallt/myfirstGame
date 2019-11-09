@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  background:none;
 }
 
 body {
@@ -25,7 +26,7 @@ body {
   
 }
 
-.game-info-container {
+.gameinfo-container {
 
   display: flex;
   justify-content: space-between;
@@ -39,7 +40,13 @@ body {
   font-size: 30px;
 }
 
-.game-info {
+.gameinfo {
+  color: #FFBB89;
+  font-size: 2em;
+  margin-left: 20%;
+}
+
+.gameinfo {
   color: #FFBB89;
   font-size: 2em;
   margin-left: 20%;
@@ -134,12 +141,14 @@ body {
   transform: scale(1);
   transform: rotateY(180deg);
   transition: transform .3s;
+  transform-style: preserve-3d;
   box-shadow: 1px 1px 1px rgba(0,0,0,.3);
   
 }
 
 .j-card:active {
   transform: scale(0.97);
+
   
 }
 
@@ -147,8 +156,19 @@ body {
   transform: rotateY(180deg);
 }
 
-.front,
+
 .back-face {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  position: absolute;
+  border-radius: 5px;
+  background: #f2f2f2;
+  backface-visibility: hidden;
+
+}
+
+.front {
   width: 100%;
   height: 100%;
   padding: 5px;
@@ -160,7 +180,7 @@ body {
 
 .front {
   transform: rotateY(180deg);
-  opacity: 0;
+  opacity: 3;
   color: #2B54BF;
   text-shadow: 1px 1px 1px rgba(255,255,255,1);
 }

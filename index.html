@@ -61,12 +61,32 @@
         $(this).find(".front").attr("src", img).attr("alt", id);
       });
     }
-    $(document).flip(function(){
-  $("p").click(function(){
-    $(this).flip();
-  });
+    $('.j-card').click(function() {
+    $(this).toggleClass('active');
 });
-   
+
+$(function(){
+    $('.flips').querySelector();
+    var flips=0;
+
+    $('.j-card').flip("click", function() { 
+        if ($('.unstar').is(':hidden')) {
+            flips++;
+            $('.unstar').show();
+            $('.j-card_number').html(flips);
+        }
+    });
+    
+    
+$gameinfo = document.querySelector("gameinfo");
+$span = document.querySelector("span");
+function increment(){
+  $span.innerHTML++;
+}
+});
+
+    
+    
     
   </script>
 
@@ -86,73 +106,73 @@
 <span class="overlay-text-small">Click to Restart</span>
 </div>
 
-<div class="game-info-container">
-      <div class="game-info">
+<div class="gameinfo-container">
+      <div class="gameinfo">
         Time <span id="time-remaining">100</span>
       </div>
-      <div class="game-info">
+      <div class="gameinfo">
         Flips <span id="flips">0</span>
       </div>
     </div>
 
   <section class="j-game">
     <div class="j-card" data-framework="joker1">
-      <img class="front" src="Joker1.jpg" alt="joker1"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="Joker1.jpg" alt="Joker1"/>
     </div>
     
     <div class="j-card" data-framework="joker1">
-      <img class="front" src="Joker1.jpg" alt="joker1"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="Joker1.jpg" alt="Joker1"/>
     </div>
 
     <div class="j-card" data-framework="joker2">
-      <img class="front" src="joker2.jpg" alt="joker2"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="joker2.jpg" alt="joker2"/>
     </div>
     
     <div class="j-card" data-framework="joker2">
-      <img class="front" src="joker2.jpg" alt="joker2"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="joker2.jpg" alt="joker2"/>
     </div>
 
     <div class="j-card" data-framework="joker3">
-      <img class="front" src="joker3.jpg.svg" alt="joker3"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="joker3.jpg" alt="joker3"/>
     </div>
     
     <div class="j-card" data-framework="joker3">
-      <img class="front" src="joker3.jpg" alt="joker3"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="joker3.jpg" alt="joker3"/>
     </div>
 
     <div class="j-card" data-framework="joker4">
-      <img class="front" src="joker4.jpg" alt="joker4"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="joker4.png" alt="joker4"/>
     </div>
     
     <div class="j-card" data-framework="joker4">
-      <img class="front" src="joker4.jpg" alt="joker4"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="joker4.png" alt="joker4"/>
     </div>
 
     <div class="j-card" data-framework="joker5">
-      <img class="front" src="joker5.jpg" alt="joker5"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="joker5.jpg" alt="joker5"/>
     </div>
     <div class="j-card" data-framework="joker5">
-      <img class="front" src=joker5.jpg" alt="joker5"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="joker5.jpg" alt="joker5"/>
     </div>
 
     <div class="j-card" data-framework="joker6">
-      <img class="front" src="joker6.jpg" alt="joker6"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7" main"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="joker6.jpg" alt="joker6" main"/>
     </div>
     
     <div class="j-card" data-framework="joker6">
-      <img class="front" src="joker6.jpg" alt="joker6"/>
-      <img class="back-face" src="joker7.jpg" alt="joker7"/>
+      <img class="front" src="joker7.jpg" alt="joker7"/>
+      <img class="back-face" src="joker6.jpg" alt="joker6"/>
     </div>
     
   </section>
@@ -171,7 +191,7 @@
 
 
 
-<a href="https://github.com/Harkanwal-Singh"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/hankanallt/myfirstGame"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
 
   
