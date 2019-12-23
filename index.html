@@ -6,43 +6,177 @@
 
   <link rel="stylesheet" href="style.css" type="text/css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css" />
-    <script src="main.js"></script>
-    <script src="jquery-3.4.1.min.js"></script>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="UI.js"></script>
+
   <title>My first game</title>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-
+    
+	var flips = 0;
+	var timer;
+	var founded = 0;
+	var maxPairs = 0;
+	
+	
+	$(document).ready(function() {
+	
+		var nrOfCards = $(".flip-card").length;
+		maxPairs = nrOfCards/2;
+	
       $(".btn-primary").click(function() {
-        countdown();
-        getCards();
-        
-        $(this).hide();
-        
+	  
+		var txt = $(this).text();
+		
+		if(txt == "Replay")
+		{
+			reset();
+			countdown(30);
+		}
+		else
+		{
+			countdown(60);
+		}
+
+	  
+	   getCards();
+	   events(); 
+       $(this).hide();
+       
+       
       });
     });
+	
+	
+	function reset()
+	{
+		if(flips > 0)
+		{
+			flips = 0;
+		}
+		
+		if(founded > 0)
+		{
+			founded = 0;
+		}
+		
+		$('.flip-card').each(function() {
+			$(this).removeClass('founded');
+		});
+		
+		flipBackAllCards();
+		
+		$("#flips").text("0");
+		$("#founded").text("0");
+	
+	}
+	
+	function gamveOver(won)
+	{
+		$('.flip-card').unbind();
+		clearInterval(timer);
+		
+		if(won)
+		{
+			alert("you won");
+		}
+		else
+		{
+			alert("you loose");
+		}
+		
+		$(".btn-primary").show();
+		$(".btn-primary").text("Replay");
+	}
+	
+	
+	function events()
+	{
+		$('.flip-card').click(function() {
+			$(this).toggleClass('active');
+			
+			flips++;
+			
+			$("#flips").text(flips);
 
-    function countdown() {
-      var sec = 100;
-      var timer = setInterval(function() {
+			if(flips%2 == 0)
+			{
+				checkIfEqual();
+			}
+			
+			
+		});
+	}
+	
+	
+	function flipBackAllCards()
+	{
+		$('.flip-card').each(function() {
+			$(this).removeClass('active');
+		});
+	}
+
+	
+	function checkIfEqual()
+	{
+		var card1 = $(".active").eq(0).attr("data-id");
+		var card2 = $(".active").eq(1).attr("data-id");
+		
+		
+		if(card1 == card2)
+		{
+			founded++;
+			
+			$("#founded").text(founded);
+			
+			if(founded < maxPairs)
+			{
+				$(".active").each(function()
+				{
+					$(this).removeClass("active").addClass("founded");
+				});
+			}
+			else
+			{
+				gamveOver(true);
+			}
+		}
+		else
+		{
+			setTimeout(function(){
+		
+				flipBackAllCards();
+			
+			 }, 500);
+		}
+	}
+		
+
+    function countdown(sec) {
+
+      timer = setInterval(function() {
         if (sec > 0) {
           sec--;
           $("#time-remaining").text(sec);
         } else {
+		
+			//Stop counter
           clearInterval(timer);
-            $(".btn-primary").show();
+		  gamveOver(false);
+            
         }
       }, 1000);
     }
+	
+
 
     function getCards() {
       var cards = [];
-       $(".j-card").each(function() {
+       $(".flip-card").each(function() {
         var card = {};
-        card.id = $(this).attr("data-framework");
+        card.id = $(this).attr("data-id");
         card.image = $(this).find(".back-face").attr("src");
         cards.push(card);
       });
@@ -54,41 +188,20 @@
     {
       cards.sort(function(a, b){return 0.5 - Math.random()});
       
-      $(".j-card").each(function(indx, item) {
+      $(".flip-card").each(function(indx, item) {
         var id = cards[indx].id;
         var img = cards[indx].image;
-        $(this).attr("data-framework", id);
-        $(this).find(".front").attr("src", img).attr("alt", id);
+        $(this).attr("data-id", id);
+        $(this).find(".back-face").attr("src", img).attr("alt", id);
       });
     }
-    $('.j-card').click(function() {
-    $(this).toggleClass('active');
-});
+    
+	
 
-$(function(){
-    $('.flips').querySelector();
-    var flips=0;
 
-    $('.j-card').flip("click", function() { 
-        if ($('.unstar').is(':hidden')) {
-            flips++;
-            $('.unstar').show();
-            $('.j-card_number').html(flips);
-        }
-    });
-    
-    
-$gameinfo = document.querySelector("gameinfo");
-$span = document.querySelector("span");
-function increment(){
-  $span.innerHTML++;
-}
-});
-
-    
-    
     
   </script>
+
 
 </head>
 
@@ -96,7 +209,7 @@ function increment(){
 <body>
   <button type="button" class="btn btn-primary  btn-lg">Start</button>
   <div class= "header">
-  <h1>Match Up<h1/></div>
+  <h1>Match Up</h1></div>
 
   <div id="game-over-text" class="overlay-text">GAME OVER
 <span class="overlay-text-small">Click to Restart</span>
@@ -115,67 +228,146 @@ function increment(){
       </div>
     </div>
 
+	
+	
+	<!-- Rör Ej -->
   <section class="j-game">
-    <div class="j-card" data-framework="joker1">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="Joker1.jpg" alt="Joker1"/>
-    </div>
-    
-    <div class="j-card" data-framework="joker1">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="Joker1.jpg" alt="Joker1"/>
-    </div>
+   
+	<div class="flip-card" data-id="Joker1.jpg">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="Joker1.jpg" alt="Joker1"/>
+		</div>
+	  </div>
+	</div>
+	<div class="flip-card" data-id="Joker1.jpg">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="Joker1.jpg" alt="Joker1"/>
+		</div>
+	  </div>
+	</div>
+	
+	<div class="flip-card" data-id="joker2.jpg">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="joker2.jpg" alt="Joker2"/>
+		</div>
+	  </div>
+	</div>
+	<div class="flip-card" data-id="joker2.jpg">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="joker2.jpg" alt="Joker2"/>
+		</div>
+	  </div>
+	</div>
+	
+	<div class="flip-card" data-id="joker3.jpg">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="joker3.jpg" alt="Joker3"/>
+		</div>
+	  </div>
+	</div>
+	
+	<div class="flip-card" data-id="joker3.jpg">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="joker3.jpg" alt="Joker3"/>
+		</div>
+	  </div>
+	</div>
+	
+	<div class="flip-card" data-id="joker4.png">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="joker4.png" alt="Joker4"/>
+		</div>
+	  </div>
+	</div>
+	<div class="flip-card" data-id="joker4.png">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="joker4.png" alt="Joker4"/>
+		</div>
+	  </div>
+	</div>
+	
+	
+	
+	<div class="flip-card" data-id="joker5.jpg">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7.jpg"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="joker5.jpg" alt="joker5.jpg"/>
+		</div>
+	  </div>
+	</div>
+	<div class="flip-card" data-id="joker5.jpg">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7.jpg"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="joker5.jpg" alt="joker5.jpg"/>
+		</div>
+	  </div>
+	</div>
+	
+	
+	<div class="flip-card" data-id="joker6.jpg">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7.jpg"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="joker6.jpg" alt="joker5.jpg"/>
+		</div>
+	  </div>
+	</div>
+	<div class="flip-card" data-id="joker6.jpg">
+	  <div class="flip-card-inner">
+		<div class="flip-card-front">
+		  <img class="front" src="joker7.jpg" alt="joker7.jpg"/>
+		</div>
+		<div class="flip-card-back">
+		 <img class="back-face" src="joker6.jpg" alt="joker6.jpg"/>
+		</div>
+	  </div>
+	</div>
+	
+	
 
-    <div class="j-card" data-framework="joker2">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="joker2.jpg" alt="joker2"/>
-    </div>
-    
-    <div class="j-card" data-framework="joker2">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="joker2.jpg" alt="joker2"/>
-    </div>
-
-    <div class="j-card" data-framework="joker3">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="joker3.jpg" alt="joker3"/>
-    </div>
-    
-    <div class="j-card" data-framework="joker3">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="joker3.jpg" alt="joker3"/>
-    </div>
-
-    <div class="j-card" data-framework="joker4">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="joker4.png" alt="joker4"/>
-    </div>
-    
-    <div class="j-card" data-framework="joker4">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="joker4.png" alt="joker4"/>
-    </div>
-
-    <div class="j-card" data-framework="joker5">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="joker5.jpg" alt="joker5"/>
-    </div>
-    <div class="j-card" data-framework="joker5">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="joker5.jpg" alt="joker5"/>
-    </div>
-
-    <div class="j-card" data-framework="joker6">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="joker6.jpg" alt="joker6" main"/>
-    </div>
-    
-    <div class="j-card" data-framework="joker6">
-      <img class="front" src="joker7.jpg" alt="joker7"/>
-      <img class="back-face" src="joker6.jpg" alt="joker6"/>
-    </div>
-    
   </section>
+  
+  <!-- Rör ej sluta -->
   
   <div class="footer">
 
@@ -194,7 +386,6 @@ function increment(){
 <a href="https://github.com/hankanallt/myfirstGame"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
 
-  
 </body>
 
 </html>
