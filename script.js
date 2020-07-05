@@ -10,7 +10,7 @@
 		var nrOfCards = $(".flip-card").length;
 		maxPairs = nrOfCards/2;
 	
-      $(".btn-primary").click(function() {
+      $(".btn-lg").click(function() {
 	  
 		var txt = $(this).text();
 		
@@ -71,8 +71,8 @@
 			alert("you loose");
 		}
 		
-		$(".btn-primary").show();
-		$(".btn-primary").text("Replay");
+		$(".btn-lg").show();
+		$(".btn-lg").text("Replay");
 	}
 	
 	
