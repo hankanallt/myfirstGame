@@ -1,0 +1,251 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: auto;
+  display: flex;
+  background:#fe1b60!important;
+}
+/*
+.page-title {
+  color: #f2f2f2;
+  font-family: Creepy, serif;
+  font-weight: normal;
+  text-align: center;
+  font-size: 6em;
+}
+*/
+.btn:h1{
+  height:fit-content;
+  width: 100%;
+  float: left;
+  position: relative;
+}
+
+.btn-lg{
+  height: fit-content;
+  width: 100%;
+  background-color: #33beff;
+  border: none;
+  text-align:center;
+  padding: none;
+  position: relative;
+  border-radius: 25px;
+    color: #fe1!important;
+
+}
+
+.btn-lg:hover{
+       background-color: #33ffac;
+}
+
+
+
+.gameinfo-container {
+  height:fit-content;
+  width: 100%;
+  margin-top: none;
+  text-align: center;
+  color: #fe1!important;
+  background-color:#4933ff;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 20px;
+  display: inline-block;
+  border-radius: 25px;
+}
+
+.header{
+  height:fit-content;
+  width: 100%;
+  padding: none;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 10px;
+  margin-top: none;
+    border-radius: 25px;
+  
+}
+
+.game-container {
+  width: 100%;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  justify-content: center;
+  perspective: 500px;
+  margin-left: auto;
+  text-align: center;
+
+}
+
+.overlay-text{
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: none;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #f2f2f2;
+  font-family: serif;
+  transition: background-color 500ms, font-size 500ms;
+}
+
+#game-over-text-small {
+  font-size: .3em;
+}
+
+
+#game-over-text.visible {
+  display: flex;
+  animation: overlay-grow 500ms forwards;
+}
+
+@keyframes dance {
+  0%, 100% {
+    transform: rotate(0)
+  }
+  25% {
+    transform: rotate(-30deg)
+  }
+  75% {
+    transform: rotate(30deg)
+  }
+
+}
+
+@keyframes overlay-grow {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 0;
+  }
+  to {
+    background-color: rgba(0, 0, 0, .8);
+    font-size: 10em;
+  }
+}
+@media (max-width: 600px) {
+  .game-container {
+    grid-template-columns: repeat(2, auto)
+  }
+
+  .game-info-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+.j-game {
+  width: 500px;
+  height: 500px;
+  margin-top:0.1%;
+  margin-left:35%;
+  margin-right: 35%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+/*Each card width and height is calculated with calc()*/
+
+.j-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 6px;
+  position: relative;
+  transform: scale (1) rotateY(180deg);
+  transition: transform .3s;
+  transform-style: preserve-3d;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  border-radius: 1px;
+  
+}
+
+.flip-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 10px;
+  position: relative;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  
+
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+
+.flip-card-inner img {width:115px;}
+
+.flip-card.active .flip-card-inner, .flip-card.founded .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.mainfooter{
+color: #f2f2f2;
+padding-bottom: 1%;
+  margin: auto;
+}
+
+.footer {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    background-color: rgba(120, 120, 120, 0.7);
+    text-align: left;
+    padding-top: 3px
+}
+
+.footer p {
+    padding: 0 0 0 20px;
+    margin: 5px 0 0;
+    line-height: 24px;
+    display: block;
+    width: auto;
+    text-shadow: 1px 1px 0px #333;
+}
+
+.footer p,
+.footer a {
+    text-align: left;
+    color: #fff
+}
+
+
+
