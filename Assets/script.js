@@ -2,27 +2,18 @@
 	var flips = 0;
 	var timer;
 	var founded = 0;
-	var maxPairs = 0;
-     
-	$(document).ready(function() {
+    var maxPairs = 0;
+    // function to play audio, btn-lg starts the game and the audio
+    $(document).ready(function() {
     var audio = {};
+    var txt = $(this).text();
+
     $('.btn-lg').click(function () {
-        audio["Laugh"] = new Audio();
-        audio["Laugh"].src='Assets/Laugh.mp3'
-        audio["Laugh"].addEventListener('load', function(){
-        audio["Laugh"].play()
-
-    
-        if(txt == "Replay");
-        {
-            play();
-        }
-
-
+        audio = new Audio('/Assets/Audio/Laugh.mp3');
+        audio.play()
         });
     });
-});
-        
+
 	$(document).ready(function() {
 	
 		var nrOfCards = $(".flip-card").length;
@@ -34,11 +25,11 @@
 		if(txt == "Replay")
 		{
 			reset();
-			countdown(30);
+            countdown(30);
 		}
 		else
 		{
-			countdown(60);
+            countdown(60);
 		}
 
 	  
@@ -49,7 +40,11 @@
        
       });
     });
-	
+    
+    $('.flip-card').click(function () {
+        audio = new Audio('/Assets/Audio/flip.wav');
+        audio.play()
+    });
 	
 	function reset()
 	{
@@ -66,14 +61,27 @@
 		$('.flip-card').each(function() {
 			$(this).removeClass('founded');
 		});
-		
+        
+        
+        
 		flipBackAllCards();
 		
 		$("#flips").text("0");
 		$("#founded").text("0");
 	
 	}
-	
+
+        if(won)
+		{
+            alert("you won");
+		}
+		else
+		{
+            alert("you loose");
+		}
+    
+    
+
 	function gamveOver(won)
 	{
 		$('.flip-card').unbind();
@@ -81,11 +89,13 @@
 		
 		if(won)
 		{
-			alert("you won");
+            alert("you won");
+
 		}
 		else
 		{
-			alert("you loose");
+            alert("you loose");
+
 		}
 		
 		$(".btn-lg").show();
