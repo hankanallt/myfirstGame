@@ -3,10 +3,16 @@
 	var timer;
 	var founded = 0;
     var maxPairs = 0;
+    var won = {};
+    //var loose = {};
+    //var audio= {};
+    var play= {};
+
+    
     // function to play audio, btn-lg starts the game and the audio
     $(document).ready(function() {
-    var audio = {};
-    var txt = $(this).text();
+    //var audio = {};
+    //var txt = $(this).text();
 
     $('.btn-lg').click(function () {
         audio = new Audio('/Assets/Audio/Laugh.mp3');
@@ -67,41 +73,49 @@
 		flipBackAllCards();
 		
 		$("#flips").text("0");
-		$("#founded").text("0");
+        $("#founded").text("0");
 	
-	}
+    }
+   
+    $(document).ready(function() {
+	
+		var audio = $(".flip-card").length;
 
         if(won)
 		{
-            alert("you won");
+            play('/Assets/Audio/victory.wav');
 		}
 		else
 		{
-            alert("you loose");
+            play("'/Assets/Audio/gameOver.wav");
 		}
     
     
+    });
+    
 
-	function gamveOver(won)
+    function gamveOver(won)
+    
 	{
 		$('.flip-card').unbind();
 		clearInterval(timer);
 		
 		if(won)
 		{
-            alert("you won");
-
+            alert("you won")
+            
 		}
 		else
 		{
-            alert("you loose");
-
+            alert("you loose")
+            
 		}
 		
 		$(".btn-lg").show();
-		$(".btn-lg").text("Replay");
+        $(".btn-lg").text("Replay");
+        
 	}
-	
+
 	
 	function events()
 	{
@@ -114,6 +128,7 @@
 
 			if(flips%2 == 0)
 			{
+                audio.play('/Assets/Audio/match.wav')
 				checkIfEqual();
 			}
 			
@@ -121,7 +136,7 @@
 		});
 	}
 	
-	
+
 	function flipBackAllCards()
 	{
 		$('.flip-card').each(function() {
@@ -140,7 +155,7 @@
 		{
 			founded++;
 			
-			$("#founded").text(founded);
+            $("#founded").text(founded);
 			
 			if(founded < maxPairs)
 			{
@@ -151,7 +166,8 @@
 			}
 			else
 			{
-				gamveOver(true);
+                
+                gamveOver(true);
 			}
 		}
 		else
@@ -163,7 +179,7 @@
 			 }, 500);
 		}
 	}
-		
+
 
     function countdown(sec) {
 
@@ -206,5 +222,3 @@
         $(this).find(".back-face").attr("src", img).attr("alt", id);
       });
     }
-    
-	
