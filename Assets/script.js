@@ -9,12 +9,12 @@
     var play= {};
 
     
-    // function to play audio, btn-lg starts the game and the audio
+    // function to play audio, btn starts the game and the audio
     $(document).ready(function() {
-    //var audio = {};
-    //var txt = $(this).text();
+    var audio = {};
+    var txt = $(this).text();
 
-    $('.btn-lg').click(function () {
+    $('.btn').click(function () {
         audio = new Audio('/Assets/Audio/Laugh.mp3');
         audio.play()
         });
@@ -25,7 +25,7 @@
 		var nrOfCards = $(".flip-card").length;
 		maxPairs = nrOfCards/2;
 	
-      $(".btn-lg").click(function() {
+      $(".btn").click(function() {
         var txt = $(this).text();
        
 		if(txt == "Replay")
@@ -46,6 +46,7 @@
        
       });
     });
+    
     
     $('.flip-card').click(function () {
         audio = new Audio('/Assets/Audio/flip.wav');
@@ -111,8 +112,8 @@
             
 		}
 		
-		$(".btn-lg").show();
-        $(".btn-lg").text("Replay");
+		$(".btn").show();
+        $(".btn").text("Replay");
         
 	}
 

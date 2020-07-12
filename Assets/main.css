@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: pink;
+}
+
+.btn {
+	display: inline-block;
+	color: white;
+	min-width: 154px;
+	text-decoration: none;
+	margin-right: 50px;
+	padding: 20px;
+	position: relative;
+	text-align: center;
+    font-size: 20px;
+
+
+}
+
+.box { background-color: #FF6766; }
+
+.btn {
+    color: #FFF;
+    transition: all 0.3s;
+    position: relative;
+    width: 100%;
+}
+.btn span {
+    transition: all 0.3s;
+}
+.btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-color: rgba(255,255,255,0.5);
+    border-bottom-color: rgba(255,255,255,0.5);
+    transform: scale(0.1, 1);
+}
+.btn:hover span {
+    letter-spacing: 2px;
+}
+.btn:hover::before {
+    opacity: 1; 
+    transform: scale(1, 1); 
+}
+.btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.3s;
+    background-color: rgba(255,255,255,0.1);
+}
+.btn:hover::after {
+    opacity: 0; 
+    transform: scale(0.1, 1);
+}
+
+
+.header{
+  height:40px;
+  width: 100%;
+  padding: none;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 15px;
+  margin-top: none;
+}
+
+.gameinfo-container{
+  width: 100%;
+  margin-top: auto;
+  display: block;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
+  justify-content: center;
+  perspective: 500px;
+  margin-left: auto;
+  text-align: center;
+  background-color: #fefefe;
+}
+.gameinfo-container game-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+.j-game {
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+
+.flip-card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3)
+}
+
+.flip-card-inner{
+  width:fit-content;
+  position: relative;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+ 
+ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+  
+  }
+
+.flip-card.active .flip-card-inner, .flip-card.founded .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+
+
+.footer {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    background-color: rgba(120, 120, 120, 0.7);
+    text-align: left;
+    padding-top: 3px
+}
+
+.footer p {
+    padding: 0 0 0 20px;
+    margin: 5px 0 0;
+    line-height: 24px;
+    display: block;
+    width: auto;
+    text-shadow: 1px 1px 0px #333;
+}
+
+.footer p,
+.footer a {
+    text-align: left;
+    color: #fff
+}
