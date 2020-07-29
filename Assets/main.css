@@ -2,8 +2,10 @@
   box-sizing: border-box;
 }
 body {
-  background-color: pink;
-}
+background-color: pink;
+  height: 100%;
+  width: 100%;
+  display: inline-block;}
 
 .btn {
 	display: inline-block;
@@ -98,10 +100,7 @@ body {
   font-size: 25px;
   font-family: 'Bowlby One SC', cursive;
 }
-.gameinfo-container game-info {
-    flex-direction: column;
-    align-items: center;
-  }
+
 
 .j-game {
   width: 640px;

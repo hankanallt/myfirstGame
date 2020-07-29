@@ -85,10 +85,14 @@
         if(won)
 		{
             play('/Assets/Audio/victory.wav');
+                    audio.play();
+
 		}
 		else
 		{
             play("'/Assets/Audio/gameOver.wav");
+                    audio.play();
+
 		}
     
     
