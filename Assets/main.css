@@ -93,7 +93,10 @@ body {
   perspective: 500px;
   margin-left: auto;
   text-align: center;
-  background-color: #fefefe;
+  background-color: #2709ce;
+  color: white;
+  font-size: 25px;
+  font-family: 'Bowlby One SC', cursive;
 }
 .gameinfo-container game-info {
     flex-direction: column;
@@ -154,6 +157,16 @@ body {
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
+}
+
+.flip-card:hover {
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+    0 24px 46px var(--box-shadow-color);
+}
+
+.flip-card:hover .overlay {
+  transform: scale(4) translateZ(0);
 }
 
 
