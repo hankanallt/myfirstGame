@@ -170,7 +170,7 @@ background-color: pink;
 
 
 @media screen and (min-width: 480px) {
-  body {
+  body .btn .gameinfo-container .header{
     background-color: lightgreen;
   }
 }

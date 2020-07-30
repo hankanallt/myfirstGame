@@ -77,6 +77,7 @@
         $("#founded").text("0");
 	
     }
+    /*
    
     $(document).ready(function() {
 	
@@ -98,7 +99,7 @@
     
     });
     
-
+*/
     function gamveOver(won)
     
 	{
