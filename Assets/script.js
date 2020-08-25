@@ -1,5 +1,5 @@
-    
-	var flips = 0;
+
+var flips = 0;
 	var timer;
 	var founded = 0;
     var maxPairs = 0;
@@ -8,7 +8,9 @@
     //var audio= {};
     var play= {};
 
-    
+
+
+
     // function to play audio, btn starts the game and the audio
     $(document).ready(function() {
     var audio = {};
@@ -100,6 +102,9 @@
     });
     
 */
+
+
+
     function gamveOver(won)
     
 	{
