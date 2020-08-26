@@ -17,15 +17,58 @@
     <title>New Game</title>
 </head>
 <body>
-<div class="box">
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm">
+<button class="btn">
+    <span>Start Game</span>
+  </button>    
+  </div>
+
+    <div class="col-sm">
+<div class= "header">
+  <span>MatchUp</span>
+  </div>
+</div>
+
+    <div class="col-sm">
+ <div class="gameinfo-container">
+        Time <span id="time-remaining">: 60</span>
+      <div class="gameinfo">
+        Flips <span id="flips">: 0</span>
+      </div>
+          </div>
+                </div>
+
+    <div class="col-sm">
+<div class="box1">
+	<a class="button1" href="#popup1">Game Rules</a>
+</div>
+    </div>
+
+  </div>
+</div>
+
+<!--
+<div class="container">
+<div class="row align-items-start">
+  <div class="col-md-12">
+  </div>  
   <button class="btn">
     <span>Start Game</span>
   </button>
-  <div class= "header"><h1>Match Up</h1></div>
+  </div>
+  </div>
+  <div class="col-md-12" >
+  <div class= "header">
+  <span>MatchUp</span></div>
 </div>
-
-<div class="gameinfo-container">
-      <div class="gameinfo">
+  </div>
+  <div class="col-md-12">
+  <div class="gameinfo-container">
+      <div class="gameinfo-container">
         Time <span id="time-remaining">: 60</span>
       </div>
       <div class="gameinfo">
@@ -33,10 +76,17 @@
       </div>
     </div>
 </div>
-</div>
+  </div>
+  <div class="col-md-12">
+  
 <div class="box1">
 	<a class="button1" href="#popup1">Game Rules</a>
 </div>
+</div>
+
+  -->
+
+
 
 <div id="popup1" class="overlay">
 	<div class="popup">
@@ -51,10 +101,13 @@
 		</div>
 	</div>
 </div>
-  
-  <section class="j-game">
 
-  <div class="flip-card" data-id="Assets/Joker1.jpg">
+</div>
+
+
+  <section class="j-game">
+  
+  <div class="flip-card" data-id="Assets/Pics/Joker1.jpg">
 	  <div class="flip-card-inner">
 		<div class="flip-card-front">
 		  <img class="front" src="Assets/Pics/joker7.jpg" alt="joker7"/>
@@ -95,9 +148,7 @@
 		</div>
 	  </div>
 	</div>
-  
 
-  
   <div class="flip-card" data-id="Assets/Pics/joker3.jpg">
 	  <div class="flip-card-inner">
 		<div class="flip-card-front">
@@ -139,7 +190,6 @@
 		</div>
 	  </div>
 	</div>
-
 
 <div class="flip-card" data-id="Assets/Pics/joker5.jpg">
 	  <div class="flip-card-inner">
@@ -183,6 +233,7 @@
 		</div>
 	  </div>
 	</div>
+
 </section>
 
 
