@@ -6,7 +6,7 @@ describe('Test of myFirstCardGame', function () {
     cy      
             .get('[class="btn"]')  
             .wait(3000)          
-            .should('be.visible')
+            .get('.row > :nth-child(1)').contains('Start Game')
             .click()
             .get(':nth-child(1) > .flip-card-inner > .flip-card-front > .front')
             .click({ multiple: true, force: true })
@@ -20,6 +20,9 @@ describe('Test of myFirstCardGame', function () {
                 
                 .get('.footer > div > p')
                 .click()
+                .get('.name')
+                .contains('Harkanwal Singh')
+
         
         });
 
@@ -35,22 +38,24 @@ describe('Test of myFirstCardGame', function () {
                 
             });
 
-            it('As a Admin i would like to Verify the time so that i know it runs when the game is Started', function (){
+            it('As a Admin i would like to Verify the GameRules button so that i can Read the Rules', function (){
                 cy      
-                        .get('[class="btn"]')            
+                        .get('[class="box1"]')            
                         .click()
-                        .get('.gameinfo-container > :nth-child(1)')
-                        .contains('56')
-                        .should('have.value', '56');
-                    
-                });
-                it('As a Admin i would like to Verify the Replay button so that i can Replay the game', function (){
-                        cy      
-                                .get('[class="btn"]')            
-                                .click()
-                                .wait(60000)
-                                .contains('Replay')
-                                .click();
+                        .get('.close')
+                        .click({force: true});
                         
                         });
-});
+
+                        
+            
+
+                        it('As a Admin i would like to Verify the Replay button so that i can Replay the game', function (){
+                                cy      
+                                        .get('[class="btn"]')            
+                                        .click()
+                                        .wait(60000)
+                                        .contains('Replay')
+                                        .click();
+})
+})
