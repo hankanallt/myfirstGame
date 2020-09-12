@@ -6,6 +6,8 @@
 
     <link rel="stylesheet" href="Assets/main.css" type="text/css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="Assets/main.css">
 
 
@@ -18,40 +20,33 @@
 </head>
 <body>
 
-<div class="container justify-content-center">
-  <div class="row justify-content-center">
-
-    <div class="col-12">
-<button class="btn">
-    <span>Start Game</span>
-  </button>    
-  </div>
-
-    <div class="col-12 ">
-<div class= "header">
-  <span>MatchUp</span>
-  </div>
-</div>
-
-    <div class="col-12">
- <div class="gameinfo-container">
-        Time <span id="time-remaining">: 60</span>
-      <div class="gameinfo">
-        Flips <span id="flips">: 0</span>
-      </div>
-          </div>
-                </div>
-
-    <div class="col-12">
-<div class="box1">
-	<a class="button1" href="#popup1">Game Rules</a>
-</div>
-    </div>
-
-  </div>
+ <section id=" nav-bar" >
+  <nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="index.html"><img class="img" src="Assets/Pics/minlogo1.png"></a>
   
-</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa fa-bars"></i>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
 
+    <li class="gameinfo-container">Time <span id="time-remaining">: 60</span>
+      <div class="gameinfo">Flips <span id="flips">: 0</span>
+      </div>
+          </li>
+      
+      <li class="nav-item"><button class="btn">
+    <span>Start Game</span><a class="nav-link" href="#"></a></button> 
+      </li>  
+
+      
+      <li class="nav-item box1"><a class="button1" href="#popup1">Game Rules</a></li>
+    </ul>
+  </div>
+</nav>
+    </section>
 
 <div id="popup1" class="overlay">
 	<div class="popup">
@@ -60,6 +55,7 @@
       2. Time is 60 Seconds<br />
       3. Replaytime is 30 Seconds<br />
       4. Find the pairs and win the game.<br />  
+      5. Click on logo to reset the game <br /> 
     </h4>
 		<a class="close" href="#">&times;</a>
 		<div class="content">
